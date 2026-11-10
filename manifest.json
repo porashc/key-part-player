@@ -1,0 +1,25 @@
+{
+  "manifest_version": 3,
+  "name": "Key Part Player",
+  "version": "0.1.0",
+  "description": "Search YouTube and queue songs that auto-play only their most-replayed / highlight section, back to back.",
+  "permissions": ["offscreen", "storage"],
+  "host_permissions": [
+    "https://www.youtube.com/*"
+  ],
+  "background": {
+    "service_worker": "background.js"
+  },
+  "action": {
+    "default_popup": "popup.html",
+    "default_title": "Key Part Player"
+  },
+  "content_scripts": [
+    {
+      "matches": ["https://www.youtube.com/watch*"],
+      "js": ["content_script.js"],
+      "all_frames": true,
+      "run_at": "document_idle"
+    }
+  ]
+}
